@@ -8,17 +8,17 @@ disable-model-invocation: true
 
 Read the repo.
 
-For each piece below: missing, write it. Already there, it must match this section and the repo as it is now. If it does not, rewrite it.
+For each piece below, look only in the repo. Missing, write it. Already there, it must match this section and the repo as it is now. If it does not, rewrite it.
 
-Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo. Those are the user's Cursor skills.
+Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo.
 
-No app yet (no manifest and no start script): reply `❌ no app` and stop. Do not invent one.
+No app yet (no manifest and no start script): reply `⚠️ no app` and stop. Do not invent one.
 
-The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `❌` plus why.
+The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `⚠️` plus the problem or what the user needs to know.
 
 ## Radar
 
-Learn every service this app deploys, and every test it runs. A service the repo does not use is out. Write one ready command per check, so the agent who later runs radar does not rediscover the stack.
+Learn every service this app deploys, and every test it runs. A service the repo does not use is out. Write one ready command per check from the repo files that define the deploy. Do not run those commands. Do not install a tool. Each command must exit on its own.
 
 Write `.cursor/skills/radar/SKILL.md` with `disable-model-invocation: true`. Description: After main moves, check that everything this app deploys matches main.
 
@@ -35,4 +35,4 @@ Rules:
 - All of that is green: reply `✅` and stop. That emoji is the whole reply. Do not invent `✅`.
 - Something failed and the cause is clear: fix it. The cause is unknown: use the debug skill, then fix it.
 
-Then, with the automate skill, one automation named `Radar - <app name>`: push to `main` on this repo. The prompt is exactly `Use radar skill in /workspace/.cursor/skills/radar/SKILL.md. Follow this skill and reply in french.` A newer push cancels the running one.
+Then one automation named `Radar - <app name>`. It runs on push to `main`. Its prompt follows the radar skill you wrote and replies in french. A newer push cancels the running one. Create it when you can. When you cannot, do not search and do not launch an agent. Ask the user to create it, and give them the name, the trigger, the prompt, and the cancel rule.
