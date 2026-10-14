@@ -28,7 +28,11 @@ Do not add a process this app does not run. Do not turn a concrete step into a s
 
 ## Radar
 
-Read the repo once. Learn every service this app deploys, and every test it runs. A service the repo does not use is out. Write one ready command per check, so the agent who later runs radar does not rediscover the stack.
+Read the repo. Learn every service this app deploys, and every test it runs. A service the repo does not use is out.
+
+Look for `.cursor/skills/radar/SKILL.md` and the automation `Radar - <app name>`. Missing: create it. Already there: it must match these instructions exactly. If it does not, update it until it does.
+
+Write one ready command per check, so the agent who later runs radar does not rediscover the stack.
 
 Write `.cursor/skills/radar/SKILL.md` with `disable-model-invocation: true`. Description: After main moves, check that everything this app deploys matches main.
 
@@ -45,7 +49,7 @@ Rules:
 - All of that is green: reply `✅` and stop. That emoji is the whole reply. Do not invent `✅`.
 - Something failed and the cause is clear: fix it. The cause is unknown: use the debug skill, then fix it.
 
-Then, with the automate skill, one automation named `Radar - <app name>`: push to `main` on this repo. The prompt is exactly `Use radar skill in /workspace/.cursor/skills/radar/SKILL.md. Follow this skill and reply in french.` A newer push cancels the running one. If that automation already exists, leave it.
+Then, with the automate skill, one automation named `Radar - <app name>`: push to `main` on this repo. The prompt is exactly `Use radar skill in /workspace/.cursor/skills/radar/SKILL.md. Follow this skill and reply in french.` A newer push cancels the running one.
 
 ## CI
 
