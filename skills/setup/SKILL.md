@@ -36,4 +36,4 @@ Rules:
 
 If this repo has a GitHub CI on `main`, add the command that prints whether that run for this commit is green, and add this rule: `The GitHub CI run on main for this commit is green.` If it has none, add neither.
 
-Then one automation named `Radar - <app name>`. Trigger: a pull request is merged into `main`, so `main` updates. The prompt is exactly `Follow the radar skill at .cursor/skills/radar/SKILL.md and reply in french.` A newer merge cancels the running one. Create it yourself when you can. When you cannot, reply `⚠️` and give the user the name, the trigger, and the prompt.
+Then one automation named `Radar - <app name>`. Trigger: a pull request is merged into `main`, so `main` updates. The prompt is exactly `Follow the radar skill at .cursor/skills/radar/SKILL.md and reply in french.` A newer merge cancels the running one. Create it yourself when you can. When you cannot, reply `⚠️` and three bullets: the name, the trigger, and the prompt.
