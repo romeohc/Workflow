@@ -10,11 +10,11 @@ Read the repo.
 
 For each piece below, look only in the repo. Missing, write it. Already there, it must match this section and the repo as it is now. If it does not, rewrite it.
 
-Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo. Those are the user's Cursor skills.
+Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo.
 
 No app yet (no manifest and no start script): reply `⚠️ no app` and stop. Do not invent one.
 
-The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `⚠️` plus why.
+The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `⚠️` plus why. When the user must create the automation, that `⚠️` includes the name, the trigger, the prompt, and the cancel rule.
 
 ## Radar
 
@@ -35,4 +35,4 @@ Rules:
 - All of that is green: reply `✅` and stop. That emoji is the whole reply. Do not invent `✅`.
 - Something failed and the cause is clear: fix it. The cause is unknown: use the debug skill, then fix it.
 
-Then create one automation with the built-in `/automate` skill. It is not a file. Name it `Radar - <app name>`. Trigger: push to `main` on this repo. The prompt is exactly `Use radar skill in /workspace/.cursor/skills/radar/SKILL.md. Follow this skill and reply in french.` A newer push cancels the running one. If `/automate` is not in this session, do not search and do not launch an agent. Reply `⚠️` and the name, the trigger, and the prompt.
+Then one automation named `Radar - <app name>`. It runs on push to `main`. Its prompt follows the radar skill you wrote and replies in french. A newer push cancels the running one. Create it when you can. When you cannot, do not search and do not launch an agent. Ask the user to create it, and give them the name, the trigger, the prompt, and the cancel rule.
