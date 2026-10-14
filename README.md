@@ -6,7 +6,7 @@ The same way of working on every app. Install it once. It is not copied into app
 
 | Skill | What it does |
 | --- | --- |
-| `/setup` | Installs radar on the current app. Rewrites it when it does not match. |
+| `/setup` | Installs this app's workflow pieces. Rewrites one when it no longer matches the app. |
 | `/fast` | Implements the change. No verification. |
 | `/hard` | Implements the change and proves it on the running app. |
 | `/debug` | Finds an unknown cause from runtime evidence. |

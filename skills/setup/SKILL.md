@@ -1,6 +1,6 @@
 ---
 name: setup
-description: Install radar on the current app. Write it when missing. Rewrite it when it does not match.
+description: Install this app's workflow pieces. Write what is missing. Rewrite what no longer matches the app.
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Read the repo.
 
-For each piece below: missing, write it. Already there and exact, leave it. Different, rewrite it until it matches.
+For each piece below: missing, write it. Already there, it must match this section and the repo as it is now. If it does not, rewrite it.
 
 Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo. Those are the user's Cursor skills.
 
