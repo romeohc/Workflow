@@ -38,7 +38,7 @@ Then install `workflow` from `/plugins`.
 
 On an app, run `/setup` and say nothing else.
 
-It writes `radar` and the automation that runs it after a merge to `main`.
+It writes `radar`. With `/automate`, it also creates the automation that runs radar after a merge to `main`.
 
 ## Update
 
