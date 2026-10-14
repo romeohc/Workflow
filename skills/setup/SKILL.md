@@ -12,7 +12,9 @@ For each piece below: missing, write it. Already there, it must match this secti
 
 Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo. Those are the user's Cursor skills.
 
-No app yet (no manifest and no start script): stop. Say the repo has no app. Do not invent one.
+No app yet (no manifest and no start script): reply `❌ no app` and stop. Do not invent one.
+
+The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `❌` plus why.
 
 ## Radar
 
@@ -34,15 +36,3 @@ Rules:
 - Something failed and the cause is clear: fix it. The cause is unknown: use the debug skill, then fix it.
 
 Then, with the automate skill, one automation named `Radar - <app name>`: push to `main` on this repo. The prompt is exactly `Use radar skill in /workspace/.cursor/skills/radar/SKILL.md. Follow this skill and reply in french.` A newer push cancels the running one.
-
-## Reply
-
-The whole reply is one of these.
-
-This app already matches this skill. You changed nothing. Reply `✅`.
-
-You put pieces in place and every one worked. Reply `⚙️` and one short line per piece you added or updated. More than one line is a bullet list under that emoji. `radar skill added`. Do not list what you left. Do not explain.
-
-A piece you tried did not work. Reply in prose. Say what failed and why. This is the only time you explain.
-
-`✅` and `⚙️` are the whole reply. Do not invent `✅` when you changed the app, or when something failed.
