@@ -8,13 +8,13 @@ disable-model-invocation: true
 
 Read the repo.
 
-For each piece below, look only in the repo. Missing, write it. Already there, it must match this section and the repo as it is now. If it does not, rewrite it.
+For each piece below, look only in the repo. Missing, write it. Already there, it must match this section and the repo as it is now. A rule this section does not contain means it does not match. Rewrite it before you do anything else.
 
 Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo.
 
 No app yet (no manifest and no start script): reply `⚠️ no app` and stop. Do not invent one.
 
-The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `⚠️` plus the problem or what the user needs to know.
+Reply `✅` when nothing changed, or `⚙️` plus the piece names you changed. Use `⚠️` for a problem or something the user must do. Say it in plain words. When the user must act, say that first, then one detail per line. A skill you rewrote still appears as `⚙️`.
 
 ## Radar
 
@@ -36,4 +36,6 @@ Rules:
 
 If this repo has a GitHub CI on `main`, add the command that prints whether that run for this commit is green, and add this rule: `The GitHub CI run on main for this commit is green.` If it has none, add neither.
 
-Then one automation named `Radar - <app name>`. It runs on push to `main`. Its prompt follows the radar skill you wrote and replies in french. A newer push cancels the running one. Create it when you can. When you cannot, do not search and do not launch an agent. Ask the user to create it, and give them the name, the trigger, the prompt, and the cancel rule.
+Rewrite this skill before the automation. If it tells the agent to run tests, it does not match.
+
+Then one automation named `Radar - <app name>`. It runs on push to `main`. The prompt is exactly `Follow the radar skill at .cursor/skills/radar/SKILL.md and reply in french.` A newer push cancels the running one. Create it when you can. When you cannot, do not search and do not launch an agent. Tell the user they have to create this automation themselves. Then the name, the trigger, the prompt, and the cancel rule, each on its own line.
