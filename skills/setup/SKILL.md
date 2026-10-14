@@ -14,7 +14,7 @@ Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo.
 
 No app yet (no manifest and no start script): reply `⚠️ no app` and stop. Do not invent one.
 
-The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `⚠️` plus why. When the user must create the automation, that `⚠️` includes the name, the trigger, the prompt, and the cancel rule.
+The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece names you changed, or `⚠️` plus the problem or what the user needs to know.
 
 ## Radar
 
