@@ -18,7 +18,7 @@ The whole reply is one line: `✅` when nothing changed, `⚙️` plus the piece
 
 ## Radar
 
-Learn every service this app deploys. A service the repo does not use is out. Write one ready command per check from the repo files that define the deploy. Do not run those commands. Do not install a tool. Each command must exit on its own. If this repo has a GitHub CI on `main`, also one command that prints whether that run for this commit is green. If it has none, write no test command.
+Learn every service this app deploys. A service the repo does not use is out. Write one ready command per check from the repo files that define the deploy. Do not run those commands. Do not install a tool. Each command must exit on its own.
 
 Write `.cursor/skills/radar/SKILL.md` with `disable-model-invocation: true`. Description: After main moves, check that everything this app deploys matches main.
 
@@ -31,8 +31,9 @@ Rules:
 - No diff: that service already matches main. Skip it.
 - A diff: wait until that deploy is live, or it has failed. If main moves while you wait, reply `🛑` and stop.
 - For each service that just deployed: run its log command. Open its public address when the skill gives one.
-- If this skill has a GitHub CI command, that run on `main` for this commit is green. If it has none, skip it.
 - All of that is green: reply `✅` and stop. That emoji is the whole reply. Do not invent `✅`.
 - Something failed and the cause is clear: fix it. The cause is unknown: use the debug skill, then fix it.
+
+If this repo has a GitHub CI on `main`, add the command that prints whether that run for this commit is green, and add this rule: `The GitHub CI run on main for this commit is green.` If it has none, add neither.
 
 Then one automation named `Radar - <app name>`. It runs on push to `main`. Its prompt follows the radar skill you wrote and replies in french. A newer push cancels the running one. Create it when you can. When you cannot, do not search and do not launch an agent. Ask the user to create it, and give them the name, the trigger, the prompt, and the cancel rule.
