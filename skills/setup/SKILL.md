@@ -27,6 +27,7 @@ Under `Commands`, one block per service: the paths that belong to it, the comman
 Rules:
 
 - Run the commands in this skill. You own the current `origin/main`. Fetch at the start and before the verdict. If main moved, reply `🛑` and stop. That emoji is the whole reply.
+- A check cannot run because a token or key is missing: reply `⚠️` and name that key. The user must add it or the check cannot run. Then stop. Do not wait.
 - For each service, diff the live commit with main, only on that service's paths.
 - No diff: that service already matches main. Skip it.
 - A diff: wait until that deploy is live, or it has failed. If main moves while you wait, reply `🛑` and stop.
