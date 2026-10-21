@@ -31,7 +31,7 @@ Rules:
 - For each service, diff the live commit with main, only on that service's paths.
 - No diff: that service already matches main. Skip it.
 - A diff: wait until that deploy is live, or it has failed. If main moves while you wait, reply `🛑` and stop.
-- For each service that just deployed: run its log command and its public address command when the skill gives one. Do not open a browser.
+- For each service that just deployed: run its log command and its public address command when the skill gives one.
 - All of that is green: reply `✅` and stop. That emoji is the whole reply. Do not invent `✅`.
 - Something failed and the cause is clear: fix it. The cause is unknown: use the debug skill, then fix it.
 
