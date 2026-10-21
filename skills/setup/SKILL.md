@@ -22,7 +22,7 @@ Learn every service this app deploys. A service the repo does not use is out. Wr
 
 Write `.cursor/skills/radar/SKILL.md` with `disable-model-invocation: true`. Description: After main moves, check that everything this app deploys matches main.
 
-Under `Commands`, one block per service: the paths that belong to it, the command that prints the live commit, the command that prints the deploy state, the command that prints the logs since that deploy, and the public address when it has one. These commands are specific to this repo. The rules below are copied word for word.
+Under `Commands`, one block per service: the paths that belong to it, the command that prints the live commit, the command that prints the deploy state, the command that prints the logs since that deploy, and, when it has a public address, the command that requests it and prints the status. That command exits non-zero when the address cannot be reached or the status is 5xx. Use the health address the repo already exposes when it has one. These commands are specific to this repo. The rules below are copied word for word.
 
 Rules:
 
@@ -31,7 +31,7 @@ Rules:
 - For each service, diff the live commit with main, only on that service's paths.
 - No diff: that service already matches main. Skip it.
 - A diff: wait until that deploy is live, or it has failed. If main moves while you wait, reply `🛑` and stop.
-- For each service that just deployed: run its log command. Open its public address when the skill gives one.
+- For each service that just deployed: run its log command and its public address command when the skill gives one. Do not open a browser.
 - All of that is green: reply `✅` and stop. That emoji is the whole reply. Do not invent `✅`.
 - Something failed and the cause is clear: fix it. The cause is unknown: use the debug skill, then fix it.
 
