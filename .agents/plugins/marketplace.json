@@ -1,11 +1,11 @@
 {
-  "name": "workflow",
+  "name": "afkit",
   "interface": {
-    "displayName": "Workflow"
+    "displayName": "afkit"
   },
   "plugins": [
     {
-      "name": "workflow",
+      "name": "afkit",
       "source": {
         "source": "local",
         "path": "./"
