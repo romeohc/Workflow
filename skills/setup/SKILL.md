@@ -8,7 +8,9 @@ disable-model-invocation: true
 
 Read the repo.
 
-For each piece below, look only in the repo. Missing, write it. Already there, check that it is perfectly up to date and matches this section exactly. If it does not, rewrite it.
+For each piece below, look in the repo. Missing, write it. Already there, check that it is perfectly up to date and matches this section exactly. If it does not, rewrite it.
+
+Which services exist: look in this order. Files in the repo. The GitHub page of this repo, its site link and its deploy checks. Host folders on disk that git does not commit. A name in `.gitignore` is not proof. The folder is. The first proof wins. All three empty: the host is unknown.
 
 Do not copy `hard`, `fast`, `debug`, `think`, or `clean` into the repo.
 
@@ -18,7 +20,7 @@ Reply `✅` when nothing changed, or `⚙️` plus the piece names you changed. 
 
 ## Radar
 
-Learn every service this app deploys. A service the repo does not use is out. Write one ready command per check from the repo files that define the deploy. Do not run those commands. Do not install a tool. Each command must exit on its own.
+Learn every service this app deploys. Use the proof above. A service with no proof is out. Write one ready command per check. Take it from the repo when the repo has one. When the host is known and the repo has none, look up that host's command in its docs. Do not run those commands. Do not install a tool. Each command must exit on its own.
 
 Write `.cursor/skills/radar/SKILL.md` with `disable-model-invocation: true`. Description: After main moves, check that everything this app deploys matches main.
 
@@ -52,6 +54,8 @@ Paths are the service root, the workspace packages it uses, the lockfile, and th
 
 A build command that also deploys another service: split them. Each keeps its own filter. Leave preview deploys as they are.
 
-No deploy is described in the repo: write nothing. Do not ask which host they use.
+Use the same proof as Radar. The first proof names the host. Write that host's filter. Missing, create it. Do not create a cloud project.
+
+Files, the GitHub page, and the host folders are all empty: do not pick a host. Reply `⚠️` and ask where production deploys.
 
 You cannot prove the host is connected, a secret is missing or you could not check it, or a dashboard also deploys this repo: write the file anyway. Reply `⚠️` and bullets: the one thing the user must do, the secret name, and where it goes. The skip lives only in a dashboard: name that switch in those bullets. Do not ask how.
