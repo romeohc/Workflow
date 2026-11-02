@@ -38,8 +38,8 @@ Then install `workflow` from `/plugins`.
 
 On an app, run `/setup` and say nothing else.
 
-It writes `radar`, and creates the automation that runs it after a merge to `main`. When it cannot create that automation, it tells you how.
+It writes `radar`, wires each service so it ships when `main` changes and its paths changed, and creates the automation that runs `radar` after a merge to `main`. When it cannot finish, it tells you the one thing to do.
 
 ## Update
 
-Push a change to this repository. Update the plugin in each tool. The skills update everywhere. Run `/setup` again on an app when its radar should change.
+Push a change to this repository. Update the plugin in each tool. The skills update everywhere. Run `/setup` again on an app when its radar or its deploy should change.
