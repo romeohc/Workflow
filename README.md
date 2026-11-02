@@ -4,42 +4,39 @@
 
 # Workflow
 
-**The same way of working on every app.** One plugin of skills for AI coding agents. Install it once in Cursor, Claude Code or Codex, and every app gets the same method: build, prove, debug, review, ship.
-
-It lives in this repo only. It is never copied into application repos.
+**Skills that make AI coding agents build, test themselves on the running app, and prove it works.** Free and open source. Install it once and use it on any app.
 
 ## Why
 
 AI agents write code fast. The hard part is trusting what they ship.
 
-This plugin gives every agent the same rules: change as little as possible, find the real cause of a problem, and prove the result on the running app, not just in a unit test. After each merge, it checks that what is live in production matches `main`.
+With Workflow, the agent does not stop at "the tests pass". It opens the running app in real conditions, checks the change works and that nothing else broke, and sends back screenshots or a video as proof. After the merge, it checks that production matches `main`.
 
-## Skills
+```mermaid
+flowchart TB
+    subgraph BUILD ["1 · Build and prove"]
+        direction LR
+        IN["Bug, request or idea"] -->|"/think"| AG["Coding agent<br/>1 feature = 1 branch = 1 PR"]
+        AG -->|"/hard"| PR["Tests itself on the running app<br/>proof: screenshots or video"]
+    end
+    subgraph SHIP ["2 · Ship and watch"]
+        direction LR
+        M["Review and merge<br/>into main"] --> D["Deploy<br/>only what changed"]
+        D --> R["radar<br/>deploys · CI · logs · live URL"]
+        R -->|"all green"| OK["✅ Done"]
+        R -->|"failure"| F["/debug<br/>fix and redeploy"]
+        F --> D
+    end
+    BUILD --> SHIP
+    style BUILD fill:none,stroke:none
+    style SHIP fill:none,stroke:none
+```
 
-| Skill | What it does |
-| --- | --- |
-| `/setup` | Reads an app and installs its workflow pieces: a `radar` skill, path-based deploys, and a post-merge automation. Rewrites a piece when it no longer matches the app. |
-| `/hard` | Implements the change, verifies it on the real app, and proves it with screenshots and a short video. |
-| `/fast` | Implements the change with no verification, then opens the ports so you can test. |
-| `/debug` | Finds an unknown cause from runtime evidence: reproduce, instrument, confirm, then the smallest fix. |
-| `/think` | Read-only. Answers any product, growth or code question as both a founder and an engineer. |
-| `/clean` | Read-only. Spawns several agents in parallel to find what to delete or simplify, proposes named PRs, and implements only the one you pick. |
-
-## How it works
-
-On an app, run `/setup` and say nothing else. It:
-
-1. **Writes `radar`** (`.cursor/skills/radar/SKILL.md`), specific to that app. For each service it deploys, `radar` has the commands to read the live commit, the deploy state, the logs and the health check.
-2. **Wires the deploys** so each service ships only when `main` changes and its own paths changed.
-3. **Creates the automation** `Radar - <app name>`, which runs `radar` after every merge to `main`.
-
-After a merge, `radar` compares each live service with `main`, waits for the deploys, reads the logs and the health checks, and replies `✅` only when everything is green. When something fails and the cause is clear, it fixes it; when the cause is unknown, it uses `/debug`.
-
-When `/setup` cannot finish, it names the one thing you have to do.
+Every skill follows the same rules: **keep it simple, question everything, delete what's useless, prove it works.**
 
 ## Install
 
-**Cursor.** Customize, then import this GitHub repository.
+**Cursor.** Open Customize, paste `https://github.com/romeohc/workflow` in the plugin search, then install.
 
 **Claude Code.**
 
@@ -56,28 +53,44 @@ codex plugin marketplace add romeohc/workflow
 
 Then install `workflow` from `/plugins`.
 
-## Update
+## Quickstart
 
-Push a change to this repository, then update the plugin in each tool. The skills update everywhere. Run `/setup` again on an app when its radar or its deploy should change.
+On your app, run `/setup`. It reads the repo and writes:
 
-## Structure
+1. **`radar`**, a skill made for this app (`.cursor/skills/radar/SKILL.md`). For each deployed service, it holds the commands that read the live commit, the deploy state, the logs and the public address.
+2. **Path-based deploys**, so a service ships only when `main` changes and its own files changed.
+3. **A Cursor automation**, `Radar - <app name>`, that runs `radar` after every merge to `main`.
 
-```text
-.
-├── .cursor-plugin/    # Cursor plugin + marketplace manifest
-├── .claude-plugin/    # Claude Code plugin + marketplace manifest
-├── .codex-plugin/     # Codex plugin manifest
-├── .agents/plugins/   # Agents marketplace manifest
-├── assets/logo.png
-└── skills/
-    ├── setup/   # installs radar, deploys and the post-merge automation
-    ├── hard/    # implement + prove on the real app
-    ├── fast/    # implement, no verification
-    ├── debug/   # runtime-evidence debugging
-    ├── think/   # read-only founder + engineer judgment
-    └── clean/   # read-only parallel cleanup review
-```
+If `/setup` cannot finish, it names the one thing you have to do. Run it again whenever the app changes.
+
+Then pick a skill for each task.
+
+## Skills
+
+| Skill | What it does |
+| --- | --- |
+| `/think` | Read-only. Answers a product, growth or code question as a founder and an engineer. Also checks whether a bug is real. |
+| `/hard` | Implements the change, tests it on the running app, and proves it with screenshots and a short video. |
+| `/fast` | Implements the change with no verification, then opens the ports so you can test it yourself. |
+| `/debug` | Reproduces the bug, proves the cause with runtime evidence, and ships the smallest fix. |
+| `/clean` | Read-only. Runs several agents in parallel on a path to find what to delete or simplify, then implements only the PR you pick. |
+| `/setup` | Installs the app's workflow pieces: `radar`, path-based deploys and the post-merge automation. |
+| `radar` | Written by `/setup` for each app. After a merge, checks deploys, CI, logs and the live URL. Replies `✅` when all is green, fixes a clear failure, and uses `/debug` when the cause is unknown. |
+
+## In progress
+
+- **`local`**: `/hard` and `/debug` expect a `local` skill that explains how to start and reach the app. `/setup` will write it.
+- **`/clean` at night**: clean and simplify the codebase on a schedule, verify with `/hard`, and open a pull request.
+- **Automatic PR review**: review engineering and security, check that the proof matches the request, then merge.
+
+## Credits
+
+Inspired by [pstack](https://github.com/poteto/plugins/tree/main/pstack) by Lauren Tan. Workflow keeps a few skills and adapts them to cloud agents.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
 
 ---
 
-Built by [Roméo HC](https://www.linkedin.com/in/romeo-hc/). Used daily to build and run [Novex](https://novex.trading).
+Built by [Roméo HC](https://github.com/romeohc). Used every day to build and run [Novex](https://novex.trading).
