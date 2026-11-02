@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/logo.png" alt="afkit" width="96" />
-</p>
-
 # afkit
 
 **Ship more code, of better quality, with almost nothing left to do yourself.** afkit is a free plugin that turns your AI coding agents into a reliable, near-autonomous dev team. Install it in a few clicks, on any app.
