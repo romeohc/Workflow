@@ -4,13 +4,13 @@
 
 # Workflow
 
-**Skills that make AI coding agents build, test themselves on the running app, and prove it works.** Free and open source. Install it once and use it on any app.
+**Ship more code, of better quality, with almost nothing left to do yourself.** Workflow is a free plugin that turns your AI coding agents into a reliable, near-autonomous dev team. Install it in a few clicks, on any app.
 
 ## Why
 
-AI agents write code fast. The hard part is trusting what they ship.
+AI coding agents are fast, but you can't trust them: they say "done" without checking, and you end up reviewing everything.
 
-With Workflow, the agent does not stop at "the tests pass". It opens the running app in real conditions, checks the change works and that nothing else broke, and sends back screenshots or a video as proof. After the merge, it checks that production matches `main`.
+Workflow fixes that. The agent thinks before it codes, tests the change itself on the running app in real conditions, and shows you the proof. After the deploy, it watches production and fixes what breaks. You decide and merge. You ship faster, with fewer bugs, and a process you can trust.
 
 ```mermaid
 flowchart TB
