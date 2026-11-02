@@ -36,19 +36,19 @@ Every skill follows the same rules: **keep it simple, question everything, delet
 
 ## Install
 
-**Cursor.** Open Customize, paste `https://github.com/romeohc/workflow` in the plugin search, then install.
+**Cursor.** Open Customize, paste `https://github.com/romeohc/Workflow` in the plugin search, then install.
 
 **Claude Code.**
 
 ```text
-/plugin marketplace add romeohc/workflow
+/plugin marketplace add romeohc/Workflow
 /plugin install workflow@workflow
 ```
 
 **Codex.**
 
 ```text
-codex plugin marketplace add romeohc/workflow
+codex plugin marketplace add romeohc/Workflow
 ```
 
 Then install `workflow` from `/plugins`.
