@@ -1,19 +1,41 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Workflow" width="96" />
+</p>
+
 # Workflow
 
-The same way of working on every app. Install it once. It is not copied into application repos.
+**The same way of working on every app.** One plugin of skills for AI coding agents. Install it once in Cursor, Claude Code or Codex, and every app gets the same method: build, prove, debug, review, ship.
+
+It lives in this repo only. It is never copied into application repos.
+
+## Why
+
+AI agents write code fast. The hard part is trusting what they ship.
+
+This plugin gives every agent the same rules: change as little as possible, find the real cause of a problem, and prove the result on the running app, not just in a unit test. After each merge, it checks that what is live in production matches `main`.
 
 ## Skills
 
 | Skill | What it does |
 | --- | --- |
-| `/setup` | Installs this app's workflow pieces. Rewrites one when it no longer matches the app. |
-| `/fast` | Implements the change. No verification. |
-| `/hard` | Implements the change and proves it on the running app. |
-| `/debug` | Finds an unknown cause from runtime evidence. |
-| `/think` | Read-only. Product and engineering judgment. |
-| `/clean` | Read-only cleanup proposals. Implements only the one you name. |
+| `/setup` | Reads an app and installs its workflow pieces: a `radar` skill, path-based deploys, and a post-merge automation. Rewrites a piece when it no longer matches the app. |
+| `/hard` | Implements the change, verifies it on the real app, and proves it with screenshots and a short video. |
+| `/fast` | Implements the change with no verification, then opens the ports so you can test. |
+| `/debug` | Finds an unknown cause from runtime evidence: reproduce, instrument, confirm, then the smallest fix. |
+| `/think` | Read-only. Answers any product, growth or code question as both a founder and an engineer. |
+| `/clean` | Read-only. Spawns several agents in parallel to find what to delete or simplify, proposes named PRs, and implements only the one you pick. |
 
-`radar` is written into each app by `/setup`. It describes that app.
+## How it works
+
+On an app, run `/setup` and say nothing else. It:
+
+1. **Writes `radar`** (`.cursor/skills/radar/SKILL.md`), specific to that app. For each service it deploys, `radar` has the commands to read the live commit, the deploy state, the logs and the health check.
+2. **Wires the deploys** so each service ships only when `main` changes and its own paths changed.
+3. **Creates the automation** `Radar - <app name>`, which runs `radar` after every merge to `main`.
+
+After a merge, `radar` compares each live service with `main`, waits for the deploys, reads the logs and the health checks, and replies `✅` only when everything is green. When something fails and the cause is clear, it fixes it; when the cause is unknown, it uses `/debug`.
+
+When `/setup` cannot finish, it names the one thing you have to do.
 
 ## Install
 
@@ -34,12 +56,28 @@ codex plugin marketplace add romeohc/workflow
 
 Then install `workflow` from `/plugins`.
 
-## Use
-
-On an app, run `/setup` and say nothing else.
-
-It writes `radar`, wires each service so it ships when `main` changes and its paths changed, and creates the automation that runs `radar` after a merge to `main`. When it cannot finish, it tells you the one thing to do.
-
 ## Update
 
-Push a change to this repository. Update the plugin in each tool. The skills update everywhere. Run `/setup` again on an app when its radar or its deploy should change.
+Push a change to this repository, then update the plugin in each tool. The skills update everywhere. Run `/setup` again on an app when its radar or its deploy should change.
+
+## Structure
+
+```text
+.
+├── .cursor-plugin/    # Cursor plugin + marketplace manifest
+├── .claude-plugin/    # Claude Code plugin + marketplace manifest
+├── .codex-plugin/     # Codex plugin manifest
+├── .agents/plugins/   # Agents marketplace manifest
+├── assets/logo.png
+└── skills/
+    ├── setup/   # installs radar, deploys and the post-merge automation
+    ├── hard/    # implement + prove on the real app
+    ├── fast/    # implement, no verification
+    ├── debug/   # runtime-evidence debugging
+    ├── think/   # read-only founder + engineer judgment
+    └── clean/   # read-only parallel cleanup review
+```
+
+---
+
+Built by [Roméo HC](https://www.linkedin.com/in/romeo-hc/). Used daily to build and run [Novex](https://novex.trading).
