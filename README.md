@@ -1,16 +1,16 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Workflow" width="96" />
+  <img src="assets/logo.png" alt="afkit" width="96" />
 </p>
 
-# Workflow
+# afkit
 
-**Ship more code, of better quality, with almost nothing left to do yourself.** Workflow is a free plugin that turns your AI coding agents into a reliable, near-autonomous dev team. Install it in a few clicks, on any app.
+**Ship more code, of better quality, with almost nothing left to do yourself.** afkit is a free plugin that turns your AI coding agents into a reliable, near-autonomous dev team. Install it in a few clicks, on any app.
 
 ## Why
 
 AI coding agents are fast, but you can't trust them: they say "done" without checking, and you end up reviewing everything.
 
-Workflow fixes that. The agent thinks before it codes, tests the change itself on the running app in real conditions, and shows you the proof. After the deploy, it watches production and fixes what breaks. You decide and merge. You ship faster, with fewer bugs, and a process you can trust.
+afkit fixes that. The agent thinks before it codes, tests the change itself on the running app in real conditions, and shows you the proof. After the deploy, it watches production and fixes what breaks. You decide and merge. You ship faster, with fewer bugs, and a process you can trust.
 
 ```mermaid
 flowchart TB
@@ -36,22 +36,22 @@ Every skill follows the same rules: **keep it simple, question everything, delet
 
 ## Install
 
-**Cursor.** Open Customize, paste `https://github.com/romeohc/Workflow` in the plugin search, then install.
+**Cursor.** Open Customize, paste `https://github.com/romeohc/afkit` in the plugin search, then install.
 
 **Claude Code.**
 
 ```text
-/plugin marketplace add romeohc/Workflow
-/plugin install workflow@workflow
+/plugin marketplace add romeohc/afkit
+/plugin install afkit@afkit
 ```
 
 **Codex.**
 
 ```text
-codex plugin marketplace add romeohc/Workflow
+codex plugin marketplace add romeohc/afkit
 ```
 
-Then install `workflow` from `/plugins`.
+Then install `afkit` from `/plugins`.
 
 ## Quickstart
 
@@ -85,7 +85,7 @@ Then pick a skill for each task.
 
 ## Credits
 
-Inspired by [pstack](https://github.com/poteto/plugins/tree/main/pstack) by Lauren Tan. Workflow keeps a few skills and adapts them to cloud agents.
+Inspired by [pstack](https://github.com/poteto/plugins/tree/main/pstack) by Lauren Tan. afkit keeps a few skills and adapts them to cloud agents.
 
 ## License
 
