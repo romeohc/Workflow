@@ -1,6 +1,6 @@
 {
   "name": "afkit",
-  "description": "The same workflow on every app.",
+  "description": "Turns your AI coding agents into a near-autonomous team that ships better code, faster.",
   "owner": {
     "name": "romeohc"
   },
@@ -8,7 +8,7 @@
     {
       "name": "afkit",
       "source": "./",
-      "description": "afkit"
+      "description": "Turns your AI coding agents into a near-autonomous team that ships better code, faster."
     }
   ]
 }
